@@ -8,7 +8,7 @@
 @IsTest
 public with sharing class FlowControlLoopsCollectionsTest {
     @IsTest
-    static void testHelloWorld() {
+    static void testHelloWorld() { //1
         String result = FlowControlLoopsCollections.helloWorld(10, 5);
         Assert.areEqual('Hello World!', result, 'Incorrect result for x > y');
 
@@ -20,7 +20,7 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testVotingEligibility() {
+    static void testVotingEligibility() { //2
         Boolean result = FlowControlLoopsCollections.votingEligibility(18);
         Assert.isTrue(result, 'Incorrect result for age >= 18');
 
@@ -29,7 +29,7 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testFindMax() {
+    static void testFindMax() { //3
         Integer result = FlowControlLoopsCollections.findMax(10, 5);
         Assert.areEqual(10, result, 'Incorrect result for num1 > num2');
 
@@ -50,7 +50,7 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testCheckNumber() {
+    static void testCheckNumber() { //4
         String result = FlowControlLoopsCollections.checkNumber(5);
         Assert.areEqual('Positive', result, 'Incorrect result for positive number');
 
@@ -65,7 +65,7 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testCheckEvenOdd() {
+    static void testCheckEvenOdd() { //5
         String result = FlowControlLoopsCollections.checkEvenOdd(2);
         Assert.areEqual('Even', result, 'Incorrect result for even number');
 
@@ -77,7 +77,7 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testCheckString() {
+    static void testCheckString() { //6
         String result = FlowControlLoopsCollections.checkString('');
         Assert.areEqual('Empty', result, 'Incorrect result for empty string');
 
@@ -90,7 +90,7 @@ public with sharing class FlowControlLoopsCollectionsTest {
 
 
     @IsTest
-    static void testDetermineGrade() {
+    static void testDetermineGrade() { //7
         String result = FlowControlLoopsCollections.determineGrade(95);
         Assert.areEqual('A', result, 'Incorrect grade for score 95');
 
@@ -108,7 +108,7 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testSumUpToLimit() {
+    static void testSumUpToLimit() { //8
         Integer result = FlowControlLoopsCollections.sumUpToLimit(5);
         Assert.areEqual(15, result, 'Incorrect sum for limit 5');
     
@@ -123,13 +123,13 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
     
     @IsTest
-    static void testReturnHelloWorld() {
+    static void testReturnHelloWorld() { //9
         String result = FlowControlLoopsCollections.returnHelloWorld();
         Assert.areEqual('Hello World!; Hello World!; Hello World!; ', result, 'Incorrect result for returnHelloWorld');
     }
 
     @IsTest
-    static void testRepeatString() {
+    static void testRepeatString() { //10
         String result = FlowControlLoopsCollections.repeatString('Hello World!', 3);
         Assert.areEqual('Hello World!; Hello World!; Hello World!', result, 'Incorrect result for repeatString with count 3');
         
@@ -141,21 +141,21 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testCreateAndPopulateList() {
+    static void testCreateAndPopulateList() { //11
         List<Integer> result = FlowControlLoopsCollections.createAndPopulateList();
         List<Integer> expectedList = new List<Integer>{1, 2, 3};
         Assert.areEqual(expectedList, result, 'Incorrect list created and populated');
     }
 
     @IsTest
-    static void testCreateAndRemoveFromList() {
+    static void testCreateAndRemoveFromList() { //12
         List<Integer> result = FlowControlLoopsCollections.createAndRemoveFromList();
         List<Integer> expectedList = new List<Integer>{1, 2, 4, 5};
         Assert.areEqual(expectedList, result, 'Incorrect list created and updated');
     }
 
     @IsTest
-    static void testCreateIntegerList() {
+    static void testCreateIntegerList() { //13
         List<Integer> result = FlowControlLoopsCollections.createIntegerList(5);
         List<Integer> expectedList = new List<Integer>{1, 2, 3, 4, 5};
         Assert.areEqual(expectedList, result, 'Incorrect list created');
@@ -168,7 +168,7 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testCreateStringSet() {
+    static void testCreateStringSet() { //14
         List<String> inputList = new List<String>{'a', 'b', 'a', 'c'};
         Set<String> result = FlowControlLoopsCollections.createStringSet(inputList);
         Set<String> expectedSet = new Set<String>{'a', 'b', 'c'};
@@ -181,14 +181,14 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testSumPositiveIntegers() {
+    static void testSumPositiveIntegers() { //15
         Integer result = FlowControlLoopsCollections.sumPositiveIntegers();
         Integer expectedSum = 12;
         Assert.areEqual(expectedSum, result, 'Incorrect sum of positive integers');
     }
 
     @IsTest
-    static void testFindWordInList() {
+    static void testFindWordInList() { //16
         List<String> words = new List<String>{'Hello', 'World', 'Goodbye'};
 
         Integer result1 = FlowControlLoopsCollections.findWordInList('World', words);
@@ -205,13 +205,13 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testCountMoney() {
+    static void testCountMoney() { //17
         Decimal result = FlowControlLoopsCollections.countMoney();
         Assert.areEqual(48.02, result, 'Incorrect total value');
     }
 
     @IsTest
-    static void testAddItemsToMap() {
+    static void testAddItemsToMap() { //18
         Map<String, Integer> result = FlowControlLoopsCollections.addItemsToMap();
 
         // Verify the map size
@@ -226,7 +226,7 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testGetSalary() {
+    static void testGetSalary() { //19
         Integer result = FlowControlLoopsCollections.getSalary('John Doe');
         Assert.areEqual(50000, result, 'Incorrect salary for John Doe');
 
@@ -244,7 +244,7 @@ public with sharing class FlowControlLoopsCollectionsTest {
     }
 
     @IsTest
-    static void testGetHighPaidEmployees() {
+    static void testGetHighPaidEmployees() { //20
         List<String> result = FlowControlLoopsCollections.getHighPaidEmployees();
         Assert.areEqual(new List<String>{'Jane Smith', 'Alice Johnson'}, result, 'Incorrect high paid employees');
     }
