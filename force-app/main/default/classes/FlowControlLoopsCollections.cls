@@ -14,7 +14,7 @@
 * in flow control, loops, and collections. By mastering these concepts, developers will be able to write more
 * efficient and effective code in their Salesforce projects.
 *
-* @author Your Name
+* @author Dirk-Jan Ansing
 */
 
 public with sharing class FlowControlLoopsCollections {
@@ -28,8 +28,16 @@ public with sharing class FlowControlLoopsCollections {
      * @param y The second number.
      * @return "Hello World!" if x greater than y, otherwise return null.
      */
-    public static String helloWorld(Integer x, Integer y) {
-        return null; // Replace null with the variable you used to store the result
+    
+     public static String helloWorld(Integer x, Integer y) {
+        string answer;
+        if(x == null || y == null){
+            answer = 'please enter both x and y'; //alternative return value because returning null is one of the expected return values and might be misinterpreted
+            return answer;}  
+        else{
+        answer = (x > y ? 'Hello World!' : null); 
+        return answer;
+        }
     }
 
     /**
@@ -42,8 +50,15 @@ public with sharing class FlowControlLoopsCollections {
      * @return true if the person is eligible to vote, false otherwise.
      */
     public static Boolean votingEligibility(Integer age) {
-        return null; // Replace null with the variable you used to store the result
+        boolean answer;
+        if(age == null){
+            answer = null;
+            return answer;}  
+        else{
+        answer = (age >= 18 ? true : false);
+        return answer;}
     }
+
 
     /**
      * Question 3
@@ -55,10 +70,16 @@ public with sharing class FlowControlLoopsCollections {
      * @return The maximum of the two numbers, or null if either number is null.
      */
     public static Integer findMax(Integer num1, Integer num2) {
-        // Initialize largestNum as null
-        Integer largestNum = null;
+        if(num1  == null || num2 == null){
+            return null;
+        }
+        else{               // playing around with lists because i can. Also: This way it's easier to adjust the method to accept more values in the future
+        list<integer> numbers = new list<integer>{num1, num2};
+        numbers.sort();
+        Integer largestNum = numbers[numbers.size()-1];
 
-        return null; // Replace null with the variable you used to store the result
+        return largestNum;
+        }
     }
 
 
@@ -71,7 +92,8 @@ public with sharing class FlowControlLoopsCollections {
      * @return A string indicating whether the number is "Positive", "Negative", or "Zero", or null if the number is null.
      */
     public static String checkNumber(Integer a) {
-        return null; // Replace null with the variable you used to store the result
+        string answer = (a == null ? null : (a > 0 ? 'Positive' : (a < 0 ? 'Negative' : 'Zero'))); //experimenting with embeded if's because it was fun. Is this a valid approach? (excel style)
+        return answer;
     }
 
     /**
@@ -83,7 +105,12 @@ public with sharing class FlowControlLoopsCollections {
      * @return A string indicating whether the number is "Even" or "Odd", or null if the number is null.
      */
     public static String checkEvenOdd(Integer a) {
-        return null; // Replace null with the variable you used to store the result
+        if(a == null){
+            return null;
+        }
+        else{
+            return (math.mod(a, 2) == 0 ? 'Even' : 'Odd');
+        }
     }
 
     /**
@@ -94,7 +121,17 @@ public with sharing class FlowControlLoopsCollections {
      * @return A string indicating whether the input is "Empty", "Null", or "Contains Text".
      */
     public static String checkString(String a) {
-        return null; // Replace null with the variable you used to store the result
+        switch on a {
+            when null {
+                return 'Null';
+            }
+            when '' {
+                return 'Empty';
+            }
+            when else {
+                return 'Contains Text';
+            }
+        }
     }
 
     /**
@@ -110,7 +147,23 @@ public with sharing class FlowControlLoopsCollections {
      * @return The grade for the given score.
      */
     public static String determineGrade(Integer score) {
-        return null; // Replace null with the variable you used to store the result
+        if(score == null){
+            return null;
+        }
+        else if(score >= 90){
+            return 'A';
+        }
+        else if(score >= 80){
+            return 'B';
+        }
+        else if(score >= 70){
+            return 'C';
+        }
+        else if(score >= 60){
+            return 'D';
+        }
+        else{
+            return 'F';}
     }
 
 
@@ -122,13 +175,16 @@ public with sharing class FlowControlLoopsCollections {
      * @return The sum of all integers up to the limit.
      */
     public static Integer sumUpToLimit(Integer intLimit) {
-        /* 
-         for (){
-            
+        if(intLimit == null){
+            return null;
+        }
+        else{
+        integer returnValue = 0;
+         for (integer i = 0; i <= intLimit; i++){
+            returnValue = (returnValue + i);
          }
-        */
-
-        return null; // Replace null with the variable you used to store the result
+        return returnValue;
+        }
     }
 
     /**
@@ -141,13 +197,11 @@ public with sharing class FlowControlLoopsCollections {
         // Initialize the result String
 
         // Use a for loop to append 'Hello World!;' to the result string three times
-        /* 
-         for (){
-            
+        string returnValue;
+         for (integer i=0;i<3;i++){
+             returnValue = returnValue + 'Hello World!; ';
          }
-        */
-
-        return null; // Replace null with the variable you used to store the result
+        return returnValue;
     }
 
     /**
@@ -161,19 +215,28 @@ public with sharing class FlowControlLoopsCollections {
      * @return The new string with the inputString repeated repeatCount times.
      */
     public static String repeatString(String inputString, Integer repeatCount) {
-        // Initialize the result String
-
-        // Use a for loop to append the inputString to the result string repeatCount times
-        /*
-        for () {
-
-            // If it is not the last iteration, add a semicolon to separate the strings
+        string answer;
+        if(inputString == null || repeatCount == null){
+            answer = null;
         }
-        */
+        /*else{
+            answer = inputString;
+            for (integer i=1;i<repeatCount;i++){
+                answer = answer + '; ' + inputString;
+            }
+        }*/
 
-        // Return the final result string
-        return null; // Replace null with the variable you used to store the result
-    }
+        // ===OR===
+        else{
+            list<string> strings = new list<string>();
+            for(integer i=0;i<repeatCount;i++){
+                strings.add(inputString);
+            }
+            answer = string.join(strings, '; ');
+        }
+
+        return answer;
+    }   
 
     /**
      * Question 11
@@ -182,15 +245,14 @@ public with sharing class FlowControlLoopsCollections {
      * @return A List of integers containing the numbers 1, 2, and 3.
      */
     public static List<Integer> createAndPopulateList() {
-        // Create a new list of integers
-
-        // Add the integers 1, 2, and 3 to the list
-        // add 1
-        // add 2
-        // add 3
-
-        // Return the populated list
-        return null; // Replace null with the variable you used to store the result
+     list<integer> numbers = new list<integer>{1,2,3};
+        return numbers;
+     // Or
+     // list<integer> numbers = new list<integer>();
+     // numbers.add(1);
+     // numbers.add(2);
+     // numbers.add(3);
+     // return numbers;
     }
 
     /**
@@ -202,30 +264,29 @@ public with sharing class FlowControlLoopsCollections {
     public static List<Integer> createAndRemoveFromList() {
         // Create a new list of integers and add numbers 1 to 5
         List<Integer> numberList = new List<Integer>{1, 2, 3, 4, 5}; //DO NOT CHANGE
-
-        // Remove the 3rd element (number 3) from the list
-        
-        // Return the updated list
-        return null; // Replace null with the variable you used to store the result
+        numberList.remove(numberList.indexOf(3));
+        return numberList;
     }
 
     /**
      * Question 13
      * Create a list filled with integers based on the input parameter.
      * Example: createIntegerList(5) should return [1, 2, 3, 4, 5] 
-     * @param n The last integer in the List.
+     * @param n The tegerlast in in the List.
      * @return A List of integers from 1 to 'n'.
      */
     public static List<Integer> createIntegerList(Integer n) {
-        // Create a new list of integers 
-
-        /*
-        for() {
-            //add integer to the list
+        list<integer> result = new list<integer>();
+        if(n == null){
+            return result;
         }
-        */ 
-
-        return null; // Replace null with the variable you used to store the result
+        else{
+            for(integer i=0;i<n;i++){
+                result.add(i+1);
+            }
+        }
+    
+        return result; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -238,11 +299,15 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static Set<String> createStringSet(List<String> inputList) {
         // Create a new Set of strings
-        Set<String> stringSet = new Set<String>();
-
-        //add strings to the set
-
-        return null; // Replace null with the variable you used to store the result
+        if(inputList == null){
+            return null;
+        }
+        else{
+            // Add all the strings from the input list to the Set)
+            Set<String> stringSet = new Set<String>();
+            stringSet.addAll(inputList);
+            return stringSet; // Replace null with the variable you used to store the result
+        }
     }
 
     /**
@@ -253,12 +318,13 @@ public with sharing class FlowControlLoopsCollections {
      */
     public static Integer sumPositiveIntegers() {
         List<Integer> numbers = new List<Integer>{-1, 2, -3, 4, -5, 6}; //DO NOT CHANGE
-
-        // Loop through the list of integers
-            // if the number is negative skip this iteration
-        
-
-        return null; // Replace null with the variable you used to store the result
+        integer result=0;
+        for(integer n : numbers){
+            if(n>0){
+                result = (result + n);
+            }
+        }
+        return result; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -270,14 +336,30 @@ public with sharing class FlowControlLoopsCollections {
      * @return The position of the word in the list as a string or -1 if the word was not found.
      */
     public static Integer findWordInList(String wordToFind, List<String> words) {
-        // The variable to store the index of the word
+        Integer IndexNum = 0;
+        if(wordToFind == null || words == null){
+            return null;
+        }
+        else if(words.contains(wordToFind) == false){
+            return -1;
+        }
+        else{
+            for(string w : words){
+                if(w == wordToFind){
+                    break;
+                }
+                else{
+                    IndexNum++;
+                }
+            }
 
-        // Loop through the list of words
-            // If the current word is the word to find, exit the loop
+        }
 
-        return null; // Replace null with the variable you used to store the result
+        // ===OR===
+        //integer indexNum = (wordToFind == null || words == null ? null : (words.contains(wordToFind) == false ? -1 : words.indexOf(wordToFind)));
+
+        return indexNum;
     }
-
     /**
      * Question 17
      * Loop through the list of money and adds them up until it accumulates more than 40 and then stops counting.
@@ -288,8 +370,15 @@ public with sharing class FlowControlLoopsCollections {
     public static Decimal countMoney() {
         // The list of money in the wallet, represented in dollars and cents
         List<Decimal> moneyInWallet = new List<Decimal>{0.50, 10, 3.84, 24.60, 9.08, 50, 4.90}; //DO NOT CHANGE
+        decimal dollars = 0.0;
+        for(decimal mIW : moneyInWallet){
+            dollars = dollars + mIW;
+            if(dollars > 40){
+                break;
+            }
 
-        return null; // Replace null with the variable you used to store the result
+        }
+        return dollars; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -299,16 +388,14 @@ public with sharing class FlowControlLoopsCollections {
      * @return The Map of fruits and their quantities.
      */
     public static Map<String, Integer> addItemsToMap() {
-        // Initialize an empty Map
+        map<string, integer> fruits = new map<string, integer>();
+        fruits.put('Apples', 5);
+        fruits.put('Oranges', 10);
+        fruits.put('Bananas', 15);
+        fruits.put('Pears', 20);
+        fruits.put('Grapes', 25);
 
-        // Add key-value pairs to the Map
-        // add Apples => 5
-        // add Oranges => 10
-        // add Bananas => 15
-        // add Pears => 20
-        // add Grapes => 25
-
-        return null; // Replace null with the variable you used to store the result
+        return fruits;
     }
 
     /**
@@ -321,8 +408,23 @@ public with sharing class FlowControlLoopsCollections {
      * @return The salary of the employee, or null if the employee is not found in the Map.
      */
     public static Integer getSalary(String employeeName) {
-        // Initialize a Map
+        if(employeeName == null){
+            return null;}
+        else{
+            map<string, integer> salaries = new map<string, integer>();
+            salaries.put('John Doe', 50000);
+            salaries.put('Jane Smith', 60000);
+            salaries.put('Sam Brown', 55000);
+            salaries.put('Alice Johnson', 65000);
+            
+            if(salaries.containsKey(employeeName)){
+                return salaries.get(employeeName);
+            }
+            else{
+                return null;
+            }
 
+        }
         // Add key-value pairs to the Map
         // add John Doe => 50000
         // add Jane Smith => 60000
@@ -332,7 +434,7 @@ public with sharing class FlowControlLoopsCollections {
         // Get the salary of the employee
 
         // Return the salary of the employee, or null if the employee is not found in the Map
-        return null; // Replace null with the variable you used to store the result
+         // Replace null with the variable you used to store the result
     }
 
     /**
@@ -348,6 +450,19 @@ public with sharing class FlowControlLoopsCollections {
     public static List<String> getHighPaidEmployees() {
         // Initialize a Map
         Map<String, Integer> employeeSalaries = new Map<String, Integer>();
+        employeeSalaries.put('John Doe', 50000);
+        employeeSalaries.put('Jane Smith', 60000);
+        employeeSalaries.put('Sam Brown', 55000);
+        employeeSalaries.put('Alice Johnson', 65000);
+
+        list<string> employees = new list<string>();
+
+        for(string e : employeeSalaries.keyset()){
+            if(employeeSalaries.get(e) > 55000){
+                employees.add(e);
+            }
+        }
+
 
         // Add key-value pairs to the Map
         // add John Doe => 50000
@@ -362,7 +477,8 @@ public with sharing class FlowControlLoopsCollections {
                 // Add the employee to the list of high paid employees
 
         // Return the list of high paid employees
-        return null; // Replace null with the variable you used to store the result
-    }
-
+        
+   
+    return employees; // Replace null with the variable you used to store the result
+}
 }
