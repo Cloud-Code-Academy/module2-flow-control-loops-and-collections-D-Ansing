@@ -197,7 +197,7 @@ public with sharing class FlowControlLoopsCollections {
         // Initialize the result String
 
         // Use a for loop to append 'Hello World!;' to the result string three times
-        string returnValue;
+        string returnValue = '';
          for (integer i=0;i<3;i++){
              returnValue = returnValue + 'Hello World!; ';
          }
